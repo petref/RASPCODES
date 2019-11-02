@@ -12,4 +12,11 @@ https://pypi.org/project/rpi-rf/
 receive.py snifs 433mhz code with protocol, pulse length and code.
 
 send.py sends code in calling of the file you need to add as arguments the pulselength and protocol as below:
-python3 send.py -p [pulselength] -t [protocol] [code]   ex:
+python3 send.py -p [pulselength] -t [protocol] [code]   
+
+radioreceive.py / radiosend.py
+
+dependencies:
+sudo apt-get install python-matplotlib
+
+https://www.instructables.com/id/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/

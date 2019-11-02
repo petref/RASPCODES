@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=myScript
+Path=/home/pi/wheel/
+Exec=lxterminal -e  '/home/pi/wheel/job.sh'
+Type=Application
+StartupNotify=true
