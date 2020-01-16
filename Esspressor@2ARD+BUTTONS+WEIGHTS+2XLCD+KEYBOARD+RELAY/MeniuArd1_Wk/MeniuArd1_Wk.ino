@@ -5,6 +5,7 @@
 
 
 
+
 // define pins for weight counters (DT & SCK) x 4 in total 8 pins
 #define DT 10
 #define SCK 11

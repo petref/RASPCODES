@@ -96,8 +96,8 @@ void setup() {
   pinMode (4, INPUT_PULLUP);
   pinMode (5, INPUT_PULLUP);
   pinMode (6, INPUT_PULLUP);
-  //pinMode (7, INPUT_PULLUP);
-  //pinMode (8, INPUT_PULLUP);
+  pinMode (7, INPUT_PULLUP);
+  pinMode (8, INPUT_PULLUP);
 
   // read values for counter weights last calibration:
   val = EEPROM_readAnything(10, val);

@@ -1,3 +1,4 @@
+ 
 #include <Wire.h>
 
 #include <LiquidCrystal_I2C.h>
@@ -7,15 +8,13 @@
 #include <EEPROM.h>
 
 #define relay  A0
-#define relay1 A0
-#define relay2 A1
-#define relay3 A2
-#define relay4 A3
-#define relay5 A4
-#define relay6 13
-#define relay7 4
-#define relay8 3
-#define relay9 2
+#define relay1 A1
+#define relay2 A2
+#define relay3 A3
+#define relay4 A6
+#define relay5 13
+#define relay6 2
+
 
 
 
@@ -142,9 +141,7 @@ char keys[ROWS][COLS] = {
 };
 
 // Defining keypad pins on arduino
-
 byte rowPins[ROWS] = {12, 11, 10, 9}; //connect to the row pinouts of the keypad
-
 byte colPins[COLS] = {8, 7, 6, 5}; //connect to the column pinouts of the keypad
 
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
@@ -166,7 +163,6 @@ int digitSiropBidon6;
 void setup() {
 
 // Initializes serial communication
-
 lcd.backlight();
 lcd.init();
 Serial.begin(9600);
@@ -179,7 +175,7 @@ lcd.begin(16, 4);
 
 lcd.clear();
 
-//initialize the relays
+//initialize the relay
 pinMode(relay,  OUTPUT);
 pinMode(relay1, OUTPUT);
 pinMode(relay2, OUTPUT);
@@ -187,9 +183,9 @@ pinMode(relay3, OUTPUT);
 pinMode(relay4, OUTPUT);
 pinMode(relay5, OUTPUT);
 pinMode(relay6, OUTPUT);
-pinMode(relay7, OUTPUT);
-pinMode(relay8, OUTPUT);
-pinMode(relay9, OUTPUT);
+//pinMode(relay7, OUTPUT);
+//pinMode(relay8, OUTPUT);
+//pinMode(relay9, OUTPUT);
 
 
 // Creates the byte for the 3 custom characters
@@ -306,7 +302,6 @@ lcd.print(" ");
 }
 
 // When called, this function will determine where the cursor should be
-
 if (cursorPosition == 0 || cursorPosition == 2 || cursorPosition == 4 || cursorPosition == 6 || cursorPosition == 8 || cursorPosition == 10 || cursorPosition == 12 ){
 
 lcd.setCursor (0,0);
