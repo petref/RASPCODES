@@ -377,8 +377,8 @@ if (( x == 49 ) && ( relayState == LOW ) && buttonPushCounter1 == previousButton
       int y = 0;
       char str1[1];
       itoa(y, str1, 10);
-      Serial.write(str1,1);
-      Serial.flush();
+//      Serial.write(str1,1);
+//      Serial.flush();
       delay(CleaningTime * 1000);
       myservo = 2;
       

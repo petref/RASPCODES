@@ -1,0 +1,62 @@
+ARDUINO WIRING
+--------------------
+
+ULTRASONIC SENSOR - ARDUINO:
+VCC ---- 5V
+ECHO(TDX) --- RX
+TRIGPIN(EN) --- D2
+GND1
+GND2 ------- GND
+
+RELAY - ARDUINO:
+VCC ---- 5V;
+GND ---- 5V;
+IN ----- A0;
+
+
+
+OTHER: 
+
+#define DistanceEn_Pin 2
+ 
+int i = 0;
+long unsigned distance = 0;
+uint8_t distanceValue [4] = {0,0,0,0};
+void setup ()
+{
+  Serial.begin (9600);
+  pinMode (DistanceEn_Pin, OUTPUT);
+  digitalWrite (DistanceEn_Pin, 1);
+}
+ 
+void Distance ()
+{
+  while (Serial.read ()> = 0); // Clear the serial buffer
+  digitalWrite (DistanceEn_Pin, 0); // Ultrasonic enable
+  while (Serial.available () <= 4) // Waiting for ultrasound window data
+  {
+  }
+  distanceValue [0] = Serial.read (); // Extract data
+  if (distanceValue [0] == 0xff) // determine if it is ultrasonic module data
+  {
+    for (i = 1; i <= 3; i ++)
+    {
+      distanceValue [i] = Serial.read ();
+    }
+   }
+ 
+  digitalWrite (DistanceEn_Pin, 1); // Ultrasonic enable off
+ 
+  distance = distanceValue [1] * 256 + distanceValue [2]; // Data processing, calculating distance
+  if ((distanceValue [3] == distanceValue [1] + distanceValue [2]-1)) // data and checksum can be removed
+  {
+    Serial.print ("The distance is:");
+    Serial.print (distance);
+    Serial.println ("mm");
+  }
+}
+ 
+void loop ()
+{
+  Distance ();
+}

@@ -1,51 +1,41 @@
-/*
- HC-SR04 Ping distance sensor]
- VCC to arduino 5v GND to arduino GND
- Echo to Arduino pin 13 Trig to Arduino pin 12
- Red POS to Arduino pin 11
- Green POS to Arduino pin 10
- 560 ohm resistor to both LED NEG and GRD power rail
- More info at: http://goo.gl/kJ8Gl
- Original code improvements to the Ping sketch sourced from Trollmaker.com
- Some code and wiring inspired by http://en.wikiversity.org/wiki/User:Dstaub/robotcar
- */
-
-#define trigPin 13
-#define echoPin 12
-#define led 11
-
+int trigPin = 3;    // Trigger
+int echoPin = 2;    // Echo
+long duration, cm, inches;
+ 
 void setup() {
+  //Serial Port begin
   Serial.begin (9600);
+  //Define inputs and outputs
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  pinMode(led, OUTPUT);
-  pinMode(led2, OUTPUT);
 }
-
+ 
 void loop() {
-  long duration, distance;
-  digitalWrite(trigPin, LOW);  // Added this line
-  delayMicroseconds(2); // Added this line
-  digitalWrite(trigPin, HIGH);
-//  delayMicroseconds(1000); - Removed this line
-  delayMicroseconds(10); // Added this line
+  // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
+  // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
   digitalWrite(trigPin, LOW);
+  delayMicroseconds(5);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+ 
+  // Read the signal from the sensor: a HIGH pulse whose
+  // duration is the time (in microseconds) from the sending
+  // of the ping to the reception of its echo off of an object.
+  pinMode(echoPin, INPUT);
   duration = pulseIn(echoPin, HIGH);
-  distance = (duration/2) / 29.1;
-  if (distance < 4) {  // This is where the LED On/Off happens
-    digitalWrite(led,HIGH); // When the Red condition is met, the Green LED should turn off
-  digitalWrite(led2,LOW);
-}
-  else {
-    digitalWrite(led,LOW);
-    digitalWrite(led2,HIGH);
-  }
-  if (distance >= 200 || distance <= 0){
-    Serial.println("Out of range");
-  }
-  else {
-    Serial.print(distance);
-    Serial.println(" cm");
-  }
-  delay(500);
+ 
+  // Convert the time into a distance
+  cm = (duration/2) / 29.1;     // Divide by 29.1 or multiply by 0.0343
+  inches = (duration/2) / 74;   // Divide by 74 or multiply by 0.0135
+  
+ 
+  Serial.print(cm);
+  Serial.print("cm");
+  Serial.println();
+
+  
+  
+  
+ delay(250);
 }
