@@ -1,4 +1,3 @@
-
 #define DistanceEn_Pin 2
 #define relay0 A0
  
@@ -51,25 +50,32 @@ void Distance()
     if ( distance > 30) {
         
        if ((sensorBlockProtection == 0)  && (distance < 380))  {
-          digitalWrite(relay0, LOW);
-          delay(300);
+          digitalWrite(relay0, LOW);  
            counter++;       
        } else {
           digitalWrite(relay0, HIGH);
           previousMillis = currentMillis;
-//          Serial.print(currentMillis);
-//          Serial.print(previousMillis);
-//          Serial.print(currentMillis-previousMillis);
-//          Serial.println();
+//        Serial.print(currentMillis);
+//        Serial.print(previousMillis);
+//        Serial.print(currentMillis-previousMillis);
+//        Serial.println();
+          
        }
 
-       Serial.println(counter);
+//       Serial.println(counter);
 
-       if(counter == 100) {
+       if(counter == 6000) {
         digitalWrite(relay0, HIGH);
         sensorBlockProtection = 1;
        } 
-       if( distance >400){
+
+       Serial.println(distance);
+       if( distance > 400){
+     
+        digitalWrite(relay0,HIGH);
+        Serial.println("STOP: ");
+        Serial.print(distance);
+        Serial.println();
         sensorBlockProtection = 0;
         counter = 0;
        }
