@@ -1,0 +1,23 @@
+Elements of arduino 1:
+-- cancelled:
+	Weights X 4 pieces:
+		- weight 1:  - DT 10 - SCK =12;
+		- weight 2:  - DTA 9 - SCK = 11;
+		- weight 3:  - DT2 A2 - SCK2 A3;
+		- weight 4:  - DT3 A6 - SCK A7;
+------------------------------------------------------
+		 
+- servo  - pin D3
+
+- liquid crystal - A4 / A5;
+
+- butoane lansat comenzi catre relee(pompe):
+	- D2 : buton 1
+	- D4 : buton 2
+	- D5 : buton 3
+	- D6 : buton 4
+	- D7 : buton 5
+	- D8 : buton 6
+
+-
+

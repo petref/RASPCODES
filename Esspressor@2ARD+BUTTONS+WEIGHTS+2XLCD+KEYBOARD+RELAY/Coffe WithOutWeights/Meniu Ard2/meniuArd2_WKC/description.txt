@@ -1,0 +1,16 @@
+Relays:
+
+Relay 1 - A0;
+Relay 2 - A1;
+Relay 3 - A2;
+Relay 4 - A3;
+Relay 5 - D3;
+Relay 6 - D2;
+
+Liquid Crystal - A4 / A5;
+
+
+Keyboard 8x8:
+
+ROWS: D12 D11 D10 D9 
+COLS: D8 D7 D6 D5
