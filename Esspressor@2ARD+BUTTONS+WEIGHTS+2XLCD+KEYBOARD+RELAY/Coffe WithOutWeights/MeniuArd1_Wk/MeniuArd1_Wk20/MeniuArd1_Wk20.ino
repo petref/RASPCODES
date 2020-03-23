@@ -154,9 +154,11 @@ void working(String PrintVariable)
         
       } else if(servoStartStop == 57){
         Servo1.write(0);
+        valEnd =9000;
       }
       
       Serial.flush();
+      
     }
 
     lcd.setCursor(0, 0);
@@ -164,8 +166,9 @@ void working(String PrintVariable)
     lcd.clear();
     lcd.print(valEnd);
     delay(1000);
+    lcd.clear();
   }
-
+  
   loop();
 }
 
@@ -238,7 +241,6 @@ void loop()
 
   if (button1 == LOW && button3 == HIGH && button4 == HIGH && button5 == HIGH && button6 == HIGH)
   {
-
     //    delay (500);
     int x = 1;
     char str[1];
@@ -246,13 +248,13 @@ void loop()
     Serial.write(str, 1);
     // Serial.print(x);
     String text = "Coffe in progress..";
+    
     working(text);
   }
 
   // Button 2:
   if (button2 == LOW)
   {
-
     delay(50);
     int x = 2;
     char str[1];
@@ -264,13 +266,10 @@ void loop()
   //Button 3 :
   if (button3 == LOW && button1 == HIGH)
   {
-
     //read counter
 //    count2 = readCount(DT, SCK);
 //    int w = (((count2 - sample) / val) - 2 * ((count2 - sample) / val));
-    lcd.clear();
-    
-    
+      lcd.clear();
       delay(500);
       int x = 3;
       char str[2];

@@ -372,40 +372,20 @@ if (( x == 49 ) && ( relayState == LOW ) && buttonPushCounter1 == previousButton
 
 
 
-} else if(( currentmillis - previousMillis1 < digitCaffeLatte*1005)  && ( myservo == 1 ) && machineState == 1)
-    {
-      int y = 0;
-      char str1[1];
-      itoa(y, str1, 10);
-      Serial.write(str1,1);
-      Serial.flush();
-      delay(CleaningTime * 1000);
-      myservo = 2;
-      
-
-      
-      
-} else if (machineState == 1 && (currentmillis - previousMillis1 < digitCaffeLatte * 1010 + (CleaningTime * 1000)))  
+}  else if (machineState == 1 && (currentmillis - previousMillis1 < digitCaffeLatte * 1010 + (CleaningTime * 1000)))  
     {
       digitalWrite(relay, LOW);    
       myservo=0;
-      
-      
-} else if (machineState == 1 && (currentmillis - previousMillis1 < digitCaffeLatte * 1012 + (CleaningTime * 1000 + 2000)))  
-    {      
       int z = 9;
       char str1[1];
       itoa(z,str1,10);
       Serial.write(str1,1);
       previousButtonCounter1 = buttonPushCounter1;
       machineState = 0;
- 
        
-  loop();
-
-
-}
-
+      loop();     
+      
+} 
 
 // this is for button2
 
@@ -425,10 +405,6 @@ if (( x == 50 ) && ( relayState == LOW ) && buttonPushCounter1 == previousButton
    
       x = 0;  // make the serial read variable back to 0 so it will not reset the previous if --- !!!! VERRY VERRY IMPORTANT STUPID!
  
-  
-
-
-
 } else if(( currentmillis - previousMillis1 < digitCappucino*1005)  && ( myservo == 1 ) && machineState == 2)
     {
       //open servo start cleaning == asume position 160degrees
@@ -453,7 +429,6 @@ if (( x == 50 ) && ( relayState == LOW ) && buttonPushCounter1 == previousButton
     {      
       //close servo ==== asume position 0
       int z = 9;
-      
       char str1[1];
       itoa(z,str1,10);
       Serial.write(str1,1);
